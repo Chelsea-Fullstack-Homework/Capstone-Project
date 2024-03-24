@@ -23,6 +23,7 @@ function App() {
       </div>
       <div id="mainarea">
         <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/AllSeries" element={<AllSeries />} />
           <Route path="/BoxedSets" element={<BoxedSets />} />

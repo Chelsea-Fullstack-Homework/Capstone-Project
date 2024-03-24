@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import AccountButton from './AccountButton'
 
 export default function NavBar() {
     return (
@@ -14,6 +15,8 @@ export default function NavBar() {
             <Link to="/Contact">CONTACT</Link>
             <br />
             <Link to="/TrackOrder">TRACK ORDER</Link>
+            <br />
+            <AccountButton />
         </nav>
     )
 }
