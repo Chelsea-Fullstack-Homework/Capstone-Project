@@ -1,6 +1,11 @@
+#accountbutton {
+    width: fit-content;
+    margin-bottom: 0px;
+}
+
 .popupwrapper {
     border: 2px solid black;
-    padding: 0px 15px 0px 15px;
+    padding: 0px 0px 0px 0px;
     width: 250px;
     height: 175px;
     text-align: center;
@@ -19,4 +24,8 @@ hr {
     width: 100%;
     border: 1px solid black;
     margin: 0;
+}
+
+.notHovered {
+    display: none;
 }
