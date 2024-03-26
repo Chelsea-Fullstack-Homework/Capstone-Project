@@ -1,12 +1,14 @@
 import "./CSS/Account.css"
 
-export default function AccountButtonPopup({hovered}) {
+export default function AccountButtonPopup() {
 
     return (
-        <div className={`popupwrapper ${!hovered? "notHovered":""}`}>
-            <p>LOGIN</p>
-            <hr />
-            <p>SIGN UP</p>
+        <div className="dropdown">
+            <div className="dropdiv">Account</div>
+            <div className="dropdown-content">
+                <a>LOGIN</a>
+                <a>SIGNUP</a>
+            </div>
         </div>
     )
 }
