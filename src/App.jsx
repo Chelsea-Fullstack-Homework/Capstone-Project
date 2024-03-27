@@ -11,6 +11,7 @@ import ShopBySeries from './Components/ShopBySeries'
 import SignUpForm from './Components/SignUpForm'
 import SingleBook from './Components/SingleBook'
 import TrackOrder from './Components/TrackOrder'
+import Home from './Components/Home'
 import './index.css'
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       </div>
       <div id="mainarea">
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/AllSeries" element={<AllSeries />} />
           <Route path="/BoxedSets" element={<BoxedSets />} />
