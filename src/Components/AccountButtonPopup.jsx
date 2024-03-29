@@ -1,4 +1,5 @@
 import "./CSS/Account.css"
+import { Link } from "react-router-dom"
 
 export default function AccountButtonPopup() {
 
@@ -6,8 +7,8 @@ export default function AccountButtonPopup() {
         <div className="dropdown">
             <div className="dropdiv">Account</div>
             <div className="dropdown-content">
-                <a>LOGIN</a>
-                <a>SIGNUP</a>
+                <Link to="/LoginForm" onClick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</Link>
+                <Link to="/SignUpForm">SIGN UP</Link>
             </div>
         </div>
     )
