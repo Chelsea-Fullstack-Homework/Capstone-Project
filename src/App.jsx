@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
       <div id="navbar">
-        <NavBar />
+        <NavBar token={token}/>
       </div>
       <div id="mainarea">
         <Routes>
