@@ -1,3 +1,4 @@
+const manga = require("./manga")
 // imports here for express and pg
 const express = require('express');
 const app = express();
@@ -46,20 +47,11 @@ const init = async()=>{
     SQL = `
     INSERT INTO manga_db 
         (title, author, price, coverimage)
-    values
-        ('Kill La Kill', 'Kazuki, Nakashima, TRIGGER, Akizuki, Ryo', '$7.50', 'IMGHERE'),
-        ('Komi Cant Communicate', 'Tomohito Oda', '$7.50', 'IMGHERE'),
-        ('Higurashi When They Cry', 'Ryukishi07, Suzuragi, Hōjō, Suzuki, Tonogai, Momoyama, Kitō, Mimori, Kagesaki', '$7.50', 'IMGHERE'),
-        ('Future Diary', 'Sakae Esuno', '$7.50', 'IMGHERE'),
-        
-        ('Danganronpa', 'Kazutaka Kodaka', '$7.50', 'IMGHERE'),
-        ('Soul Eater', 'Atsushi Ohkubo', '$7.50', 'IMGHERE'),
-        ('Prison School', 'Akira Hiramoto', '$7.50', 'IMGHERE'),
-        ('The Devil Is a Part-Timer!', 'Wagahara, Oniku(029)', '$7.50', 'IMGHERE'),
-        ('Shimoneta', 'Akagi, Shimotsuki', '$7.50', 'IMGHERE'),
-        ('Highschool of the Dead', 'Satō, Satō', '$7.50', 'IMGHERE')
+    values($1,$2,$3,$4)
     `;
-    await client.query(SQL);
+    for(const singleManga of manga.inventory){
+        await client.query(SQL, [singleManga.title,singleManga.author,singleManga.price,singleManga.imgsrc]);
+    }
     console.log('data seeded')
 
     let port = process.env.PORT || 3000;
