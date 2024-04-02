@@ -1,3 +1,4 @@
+const manga = require("./manga")
 // imports here for express and pg
 const express = require('express');
 const app = express();
@@ -8,9 +9,13 @@ const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/m
 // static routes here (you only need these for deployment)
 
 // app routes here 
-// this works somehow
-// app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
-  
+app.get('/api/manga', async (req, res) => {
+    const SQL = `
+    SELECT * FROM manga_db;
+    `;
+    const response = await client.query(SQL);
+    res.json(response.rows);
+});
 
 // create your init function
 const init = async()=>{
@@ -21,6 +26,7 @@ const init = async()=>{
      * price
      * sku
      * author
+     * img
      */
 
     let SQL = `
@@ -29,13 +35,24 @@ const init = async()=>{
         sku SERIAL PRIMARY KEY,
         title VARCHAR(255),
         author VARCHAR(255),
-        is_available BOOLEAN DEFAULT FALSE,
-        total_amount INTEGER DEFAULT 0,
-        price VARCHAR(255)
-    )
-    ;`;
+        in_inventory INTEGER DEFAULT 1,
+        price VARCHAR(255),
+        is_available BOOLEAN DEFAULT TRUE,
+        coverimage VARCHAR(255)
+    );
+    `;
     await client.query(SQL);
-    console.log('data seeded');
+    console.log('tables created');
+
+    SQL = `
+    INSERT INTO manga_db 
+        (title, author, price, coverimage)
+    values($1,$2,$3,$4)
+    `;
+    for(const singleManga of manga.inventory){
+        await client.query(SQL, [singleManga.title,singleManga.author,singleManga.price,singleManga.imgsrc]);
+    }
+    console.log('data seeded')
 
     let port = process.env.PORT || 3000;
     app.listen(port,()=>console.log(`listening on port ${port}`));

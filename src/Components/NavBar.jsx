@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import AccountButton from './AccountButton'
 
-export default function NavBar() {
+export default function NavBar({token}) {
     return (
         <nav>
             <Link to="/Home">HOME</Link>
@@ -16,7 +16,7 @@ export default function NavBar() {
             <br />
             <Link to="/TrackOrder">TRACK ORDER</Link>
             <br />
-            <AccountButton />
+            <AccountButton token={token}/>
         </nav>
     )
 }

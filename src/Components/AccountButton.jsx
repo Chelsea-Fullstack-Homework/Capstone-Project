@@ -1,10 +1,10 @@
 import AccountButtonPopup from "./AccountButtonPopup"
 
-export default function AccountButton() {
+export default function AccountButton({token}) {
 
     return (
         <div className="accountbuttonwrapper">
-            <AccountButtonPopup />
+            <AccountButtonPopup token={token}/>
         </div>
     )
 }
