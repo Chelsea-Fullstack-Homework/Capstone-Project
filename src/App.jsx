@@ -7,7 +7,7 @@ import BoxedSets from './Components/BoxedSets'
 import LoginForm from './Components/LoginForm'
 import MyAccount from './Components/MyAccount'
 import RecentlyAdded from './Components/RecentlyAdded'
-import ShopBySeries from './Components/ShopBySeries'
+import ShowAllProducts from './Components/ShowAllProducts'
 import SignUpForm from './Components/SignUpForm'
 import SingleBook from './Components/SingleBook'
 import TrackOrder from './Components/TrackOrder'
@@ -31,7 +31,7 @@ function App() {
           <Route path="/LoginForm" element={<LoginForm />} />
           <Route path="/MyAccount" element={<MyAccount />} />
           <Route path="/RecentlyAdded" element={<RecentlyAdded />} />
-          <Route path="/ShopBySeries" element={<ShopBySeries />} />
+          <Route path="/ShowAllProducts" element={<ShowAllProducts />} />
           <Route path="/SignUpForm" element={<SignUpForm />} />
           <Route path="/SingleBook" element={<SingleBook />} />
           <Route path="/TrackOrder" element={<TrackOrder />} />

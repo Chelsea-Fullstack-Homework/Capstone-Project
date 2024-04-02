@@ -9,6 +9,15 @@ const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/m
 // static routes here (you only need these for deployment)
 
 // app routes here 
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+
 app.get('/api/manga', async (req, res) => {
     const SQL = `
     SELECT * FROM manga_db;

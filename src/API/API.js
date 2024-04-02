@@ -1,4 +1,4 @@
-const apiUrl = ""
+const apiUrl = "http://localhost:3000"
 
 export async function loginForm(formData) {
     try {
@@ -48,9 +48,9 @@ export async function signupForm(formData) {
     }
 }
 
-export async function allBooks() {
+export async function allProducts() {
     try {
-        const response = await fetch(`${apiUrl}/books`, {
+        const response = await fetch(`${apiUrl}/api/manga`, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -68,9 +68,9 @@ export async function allBooks() {
     }
 }
 
-export async function singleBook(bookId) {
+export async function singleBook(bookSku) {
     try {
-        const response = await fetch(`${apiUrl}/books/${bookId}`, {
+        const response = await fetch(`${apiUrl}/api/manga/${bookSku}`, {
             headers: {
                 'Content-Type': 'application/json',
             },

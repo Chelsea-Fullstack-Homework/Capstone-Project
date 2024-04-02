@@ -8,7 +8,7 @@ export default function NavBar({token}) {
             <br />
             <Link to="/RecentlyAdded">RECENTLY ADDED</Link>
             <br />
-            <Link to="/ShowAllProducts">SHOW ALL PRODUTS</Link>
+            <Link to="/ShowAllProducts">SHOW ALL PRODUCTS</Link>
             <br />
             <Link to="/AboutUs">ABOUT US</Link>
             <br />
