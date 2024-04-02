@@ -14,7 +14,7 @@ export default function AccountButtonPopup({token}) {
             }
 
             <div className="dropdown-content">
-                <Link to="/LoginForm" onClick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</Link>
+                <Link to="/LoginForm">LOGIN</Link>
                 <Link to="/SignUpForm">SIGN UP</Link>
             </div>
         </div>

@@ -1,6 +1,6 @@
 //import
 
-export default function ShopBySeries() {
+export default function ShowAllProducts() {
 
     return (
         <>
