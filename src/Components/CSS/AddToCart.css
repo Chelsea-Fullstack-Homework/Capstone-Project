@@ -1,10 +1,10 @@
-button {
-    width: 4rem;
-    height: 4rem;
+.button-container {
     position: relative;
 }
 
 .cart {
+    width: 4rem;
+    height: 4rem;
     border: none;
     background: transparent;
 }
@@ -19,11 +19,8 @@ button {
     width: 2rem;
     color: white;
     position: absolute;
-    transform: translate(140%,-75%);
+    top: -5px;
+    right: -5px;
     font-size: 20px;
     font-weight: bold;
-}
-
-.wholecart {
-
 }
