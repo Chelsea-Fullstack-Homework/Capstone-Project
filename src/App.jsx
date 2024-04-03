@@ -17,11 +17,17 @@ import './index.css'
 
 function App() {
   const [token, setToken] = useState(null)
+  const [cartCount, setCartCount] = useState(0);
+
+  const addToCart = () => {
+      setCartCount(prevCount => prevCount + 1);
+  };
+
 
   return (
     <div>
       <div id="navbar">
-        <NavBar token={token}/>
+        <NavBar token={token} cartCount={cartCount}/>
       </div>
       <div id="mainarea">
         <Routes>
@@ -32,7 +38,7 @@ function App() {
           <Route path="/LoginForm" element={<LoginForm />} />
           <Route path="/MyAccount" element={<MyAccount />} />
           <Route path="/RecentlyAdded" element={<RecentlyAdded />} />
-          <Route path="/ShowAllProducts" element={<ShowAllProducts />} />
+          <Route path="/ShowAllProducts" element={<ShowAllProducts addToCart={addToCart}/>} />
           <Route path="/SignUpForm" element={<SignUpForm />} />
           <Route path="/SingleBook" element={<SingleBook />} />
           <Route path="/TrackOrder" element={<TrackOrder />} />

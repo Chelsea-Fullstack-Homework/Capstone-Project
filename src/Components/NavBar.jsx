@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import AccountButton from './AccountButton'
 import AddToCart from "./AddToCart";
 
-export default function NavBar({token}) {
+export default function NavBar({ token, cartCount }) {
     return (
         <nav>
             <Link to="/Home">HOME</Link>
@@ -17,8 +17,9 @@ export default function NavBar({token}) {
             <br />
             <Link to="/TrackOrder">TRACK ORDER</Link>
             <br />
-            <AddToCart />
             <AccountButton token={token}/>
+            <br />
+            <AddToCart cartCount={cartCount}/>
         </nav>
     )
 }

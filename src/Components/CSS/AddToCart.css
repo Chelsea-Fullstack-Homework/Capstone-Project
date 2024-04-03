@@ -1,0 +1,29 @@
+button {
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+}
+
+.cart {
+    border: none;
+    background: transparent;
+}
+
+.itemsincart {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    color: white;
+    position: absolute;
+    transform: translate(140%,-75%);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.wholecart {
+
+}
