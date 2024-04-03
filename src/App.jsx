@@ -11,6 +11,7 @@ import ShowAllProducts from './Components/ShowAllProducts'
 import SignUpForm from './Components/SignUpForm'
 import SingleBook from './Components/SingleBook'
 import TrackOrder from './Components/TrackOrder'
+import AddToCart from './Components/AddToCart'
 import Home from './Components/Home'
 import './index.css'
 
@@ -35,6 +36,7 @@ function App() {
           <Route path="/SignUpForm" element={<SignUpForm />} />
           <Route path="/SingleBook" element={<SingleBook />} />
           <Route path="/TrackOrder" element={<TrackOrder />} />
+          <Route path="/AddToCart" element={<AddToCart />} />
         </Routes>
       </div>
     </div>
