@@ -1,4 +1,4 @@
-{
+export default {
     "inventory" : [
         {"title":"Kill La Kill vol. 1","author":"Kazuki, Nakashima, TRIGGER, Akizuki, Ryo","price":"$7.50","imgsrc":"https://img.com"},
         {"title":"Kill La Kill vol. 2","author":"Kazuki, Nakashima, TRIGGER, Akizuki, Ryo","price":"$7.50","imgsrc":"https://img.com"},

@@ -1,12 +1,12 @@
-const manga = require("./manga")
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto')
+import manga from './manga.js';
+import jwt from 'jsonwebtoken'; 
+import crypto from 'crypto';
 
 // imports here for express and pg
-const express = require('express');
+import express from 'express';
 const app = express();
-const path = require('path');
-const pg = require('pg');
+import path from 'path';
+import pg from 'pg';
 const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/manga_db')
 
 app.use(express.json())
