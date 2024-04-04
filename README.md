@@ -23,7 +23,7 @@ npm run dev
 ```
 
 
-Starting the Back-End server wil allow you to make API calls via 'ExpressJS'.
+Starting the Back-End server will allow you to make API calls via 'ExpressJS'.
 1. Open a duplicate tab of the app root directory in terminal or iTerm2.
 2. Copy and paste this code:
 
