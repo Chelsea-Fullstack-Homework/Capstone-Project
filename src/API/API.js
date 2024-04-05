@@ -50,7 +50,7 @@ export async function signupForm(formData) {
 
 export async function allProducts() {
     try {
-        const response = await fetch(`${apiUrl}/api/manga`, {
+        const response = await fetch(`${apiUrl}/api/books`, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -61,7 +61,7 @@ export async function allProducts() {
         }
 
         const data = await response.json();
-        return data.books;
+        return data;
     } catch (error) {
         console.error('Error fetching books:', error.message);
         throw error;
@@ -70,13 +70,13 @@ export async function allProducts() {
 
 export async function singleBook(bookSku) {
     try {
-        const response = await fetch(`${apiUrl}/api/manga/${bookSku}`, {
+        const response = await fetch(`${apiUrl}/api/books/${bookSku}`, {
             headers: {
                 'Content-Type': 'application/json',
             },
         });
         const data = await response.json();
-        return data.book;
+        return data;
     } catch (error) {
         console.error('Error fetching book details:', error);
         throw error;
