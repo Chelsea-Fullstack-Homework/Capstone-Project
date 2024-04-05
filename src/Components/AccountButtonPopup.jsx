@@ -1,22 +1,36 @@
 import "./CSS/Account.css"
 import { Link } from "react-router-dom"
 
-export default function AccountButtonPopup({token}) {
+export default function AccountButtonPopup({ token, setToken }) {
+
+function handleClick(){
+    console.log("click")
+    localStorage.removeItem("token")
+    setToken(null)
+}
 
     return (
         <div className="dropdown">
 
             {
                 token ?
-                    <div className="dropdiv">Account</div>
+                    <div>
+                        <div className="dropdiv">ACCOUNT</div>
+                        <div className="dropdown-content">
+                            <Link to="/MyAccount">My Account</Link>
+                            <Link to="/Cart">My Cart</Link>
+                            <div onClick={handleClick()}>Sign Out</div>
+                        </div>
+                    </div>
                     :
-                    <div className="dropdiv">Login</div>
+                    <div>
+                        <div className="dropdiv">LOGIN</div>
+                        <div className="dropdown-content">
+                            <Link to="/LoginForm">Login</Link>
+                            <Link to="/SignUpForm">Sign Up</Link>
+                        </div>
+                    </div>
             }
-
-            <div className="dropdown-content">
-                <Link to="/LoginForm">LOGIN</Link>
-                <Link to="/SignUpForm">SIGN UP</Link>
-            </div>
         </div>
     )
 }

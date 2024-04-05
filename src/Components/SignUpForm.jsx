@@ -2,7 +2,7 @@ import { signupForm } from "../API/API";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function SignUpForm() {
+export default function SignUpForm({setToken}) {
 
     const [formData, setFormData] = useState({
         firstname: '',
@@ -23,7 +23,8 @@ export default function SignUpForm() {
             return;
         }
         try {
-            await signupForm(formData);
+            let result = await signupForm(formData);
+            setToken(result)
             navigate("/Home")
         } catch (error) {
             console.error('Sign Up Error:', error);

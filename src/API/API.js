@@ -2,7 +2,7 @@ const apiUrl = "http://localhost:3000"
 
 export async function loginForm(formData) {
     try {
-        const response = await fetch(`${apiUrl}/users/LoginForm`, {
+        const response = await fetch(`${apiUrl}/api/users/login`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -25,8 +25,9 @@ export async function loginForm(formData) {
 }
 
 export async function signupForm(formData) {
+    console.log(formData)
     try {
-        const response = await fetch(`${apiUrl}/users/SignUpForm`, {
+        const response = await fetch(`${apiUrl}/api/users/register`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -37,14 +38,14 @@ export async function signupForm(formData) {
         const data = await response.json();
         if (response.ok) {
             localStorage.setItem('token', data.token);
-
+            alert(data.message)
+            return data.token
         } else {
             alert(data.message);
         }
     } catch (error) {
         console.error('Sign Up Error:', error);
         alert('An error occurred. Please try again.');
-        throw error
     }
 }
 

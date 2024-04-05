@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route } from "react-router-dom"
 import NavBar from './Components/NavBar'
 import AboutUs from './Components/AboutUs'
@@ -22,12 +22,16 @@ function App() {
   const addToCart = () => {
       setCartCount(prevCount => prevCount + 1);
   };
-
+useEffect (() => {try {
+  setToken(localStorage.getItem('token'))
+} catch(error) {
+  alert('no token found')
+}}, [])
 
   return (
     <div>
       <div id="navbar">
-        <NavBar token={token} cartCount={cartCount}/>
+        <NavBar token={token} cartCount={cartCount} setToken={setToken}/>
       </div>
       <div id="mainarea">
         <Routes>
@@ -39,7 +43,7 @@ function App() {
           <Route path="/MyAccount" element={<MyAccount />} />
           <Route path="/RecentlyAdded" element={<RecentlyAdded />} />
           <Route path="/ShowAllProducts" element={<ShowAllProducts addToCart={addToCart}/>} />
-          <Route path="/SignUpForm" element={<SignUpForm />} />
+          <Route path="/SignUpForm" element={<SignUpForm setToken={setToken}/>} />
           <Route path="/SingleBook" element={<SingleBook />} />
           <Route path="/TrackOrder" element={<TrackOrder />} />
           <Route path="/AddToCart" element={<AddToCart />} />
