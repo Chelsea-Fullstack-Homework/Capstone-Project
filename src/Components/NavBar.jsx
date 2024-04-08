@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AccountButton from "./AccountButton";
 import AddToCart from "./AddToCart";
-import CartPopup from "./Cart";
+import Cart from "./Cart";
+import "./CSS/NavBar.css";
 
-export default function NavBar({ token, cartCount, setToken }) {
+export default function NavBar({ token, cartCount }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleCartPopup = () => {
@@ -12,23 +13,19 @@ export default function NavBar({ token, cartCount, setToken }) {
   };
 
   return (
-    <nav>
-      <Link to="/Home">HOME</Link>
-      <br />
-      <Link to="/RecentlyAdded">RECENTLY ADDED</Link>
-      <br />
-      <Link to="/ShowAllProducts">SHOW ALL PRODUCTS</Link>
-      <br />
-      <Link to="/AboutUs">ABOUT US</Link>
-      <br />
-      <Link to="/Contact">CONTACT</Link>
-      <br />
-      <Link to="/TrackOrder">TRACK ORDER</Link>
-      <br />
-      <AccountButton token={token} setToken={setToken}/>
-      <br />
-      <AddToCart cartCount={cartCount} onClick={toggleCartPopup} />
-      {isCartOpen && <CartPopup />}
+    <nav className="navbar">
+      <ul>
+        <li><Link to="/Home">HOME</Link></li>
+        <li><Link to="/RecentlyAdded">RECENTLY ADDED</Link></li>
+        <li><Link to="/ShowAllProducts">SHOW ALL PRODUCTS</Link></li>
+        <li><Link to="/AboutUs">ABOUT US</Link></li>
+        <li><Link to="/Contact">CONTACT</Link></li>
+        <li><Link to="/TrackOrder">TRACK ORDER</Link></li>
+        <li><AccountButton token={token} /></li>
+        <li><AddToCart cartCount={cartCount} onClick={toggleCartPopup} /></li>
+      </ul>
+      {isCartOpen && <Cart />}
     </nav>
   );
 }
+

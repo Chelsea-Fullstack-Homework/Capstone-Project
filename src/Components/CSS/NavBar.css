@@ -1,0 +1,43 @@
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #ffff;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  color: #ffd700;
+}
+
+.navbar ul li:last-child {
+  margin-right: 0;
+}
+
+.products-heading {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
