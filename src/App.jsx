@@ -45,7 +45,7 @@ useEffect (() => {try {
           <Route path="/ShowAllProducts" element={<ShowAllProducts addToCart={addToCart}/>} />
           <Route path="/SignUpForm" element={<SignUpForm setToken={setToken}/>} />
           <Route path="/SingleBook" element={<SingleBook />} />
-          <Route path="/SingleBook/:bookSku" element={<SingleBook />} />
+          <Route path="/SingleBook/:bookSku" element={<SingleBook addToCart={addToCart}/>} />
           <Route path="/TrackOrder" element={<TrackOrder />} />
           <Route path="/AddToCart" element={<AddToCart />} />
         </Routes>

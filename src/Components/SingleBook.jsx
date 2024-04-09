@@ -1,12 +1,13 @@
 import { singleBook } from "../API/API";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-// import { updateBookAvailability } from "../API";
+import React from "react";
+import "./CSS/SingleBook.css";
 
-export default function SingleBook() {
+export default function SingleBook({ addToCart }) {
     const { bookSku } = useParams();
     const [book, setBook] = useState(null);
-    console.log(book)
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -20,19 +21,22 @@ export default function SingleBook() {
     }, [bookSku]);
 
     return (
-        <div>
-            <h2>Book Details</h2>
+        <div className="single-book-container">
+            <h2 className="book-details-title">Book Details</h2>
             {book && (
-                <div>
+                <div className="book-details">
                     <h3>{book.title}</h3>
                     <p>Author: {book.author}</p>
-                    <img src={book.coverimage} alt={book.title} style={{ maxWidth: '200px' }} />
-                    <p>Description: {book.description}</p>
+                    <div className="image-container">
+                        <img src={book.coverimage} alt={book.title} className="book-image" />
+                    </div>
+                    <p className="desc">Description:<br /> {book.description}</p>
                     <p>Available: {book.in_inventory ? 'Yes' : 'No'}</p>
                     {/* Render Checkout button conditionally */}
                     {book.available && (
                         <button /*onClick={() => updateBookAvailability(bookSku, false)}*/>Add To Cart</button>
                     )}
+                    <button onClick={() => addToCart(book)}>Add To Cart</button>
                 </div>
             )}
         </div>
