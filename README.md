@@ -8,7 +8,7 @@ Ensure npm is tracking on your dependencies.
 2. Copy and paste this code:
 
 ```console
-npm install express nodemon pg jsonwebtoken react react-dom react-router-dom
+npm install express nodemon pg jsonwebtoken react react-dom react-router-dom cors
 ```
 
 
