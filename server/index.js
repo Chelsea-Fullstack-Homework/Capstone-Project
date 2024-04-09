@@ -1,6 +1,7 @@
 import manga from './manga.js';
 import jwt from 'jsonwebtoken'; 
 import crypto from 'crypto';
+import cors from 'cors';
 
 // imports here for express and pg
 import express from 'express';
@@ -9,9 +10,13 @@ import path from 'path';
 import pg from 'pg';
 const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/manga_db')
 
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
-// static routes here (you only need these for deployment)
+// static route (need for deployment)
+//app.use(express.static(path.join(__dirname, '../client/dist')));
+// serve html
+//app.get('/', (req, res)=> res.sendFile(path.join(__dirname, '../client/dist/index.html'))). 
 
 // app routes
 app.get('/api/books', async (req, res) => {
@@ -74,7 +79,7 @@ app.post('/api/users/login', async (req, res)=>{
     FROM
         users
     WHERE
-        email = '${email}'
+        email = '${email}';
     `;
     try {
         const response = await client.query(SQL);
@@ -144,7 +149,7 @@ const init = async()=>{
     SQL = `
     INSERT INTO manga 
         (title, author, price, coverimage)
-    values($1,$2,$3,$4)
+    values($1,$2,$3,$4);
     `;
     for(const singleManga of manga.inventory){
         await client.query(SQL, [singleManga.title,singleManga.author,singleManga.price,singleManga.imgsrc]);
