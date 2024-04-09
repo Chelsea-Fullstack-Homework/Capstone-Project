@@ -1,35 +1,44 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom"
+import NavBar from './Components/NavBar'
+import AboutUs from './Components/AboutUs'
+import AllSeries from './Components/AllSeries'
+import BoxedSets from './Components/BoxedSets'
+import LoginForm from './Components/LoginForm'
+import MyAccount from './Components/MyAccount'
+import RecentlyAdded from './Components/RecentlyAdded'
+import ShopBySeries from './Components/ShopBySeries'
+import SignUpForm from './Components/SignUpForm'
+import SingleBook from './Components/SingleBook'
+import TrackOrder from './Components/TrackOrder'
+import Home from './Components/Home'
+import './index.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [token, setToken] = useState(null)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <div id="navbar">
+        <NavBar token={token}/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div id="mainarea">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/AllSeries" element={<AllSeries />} />
+          <Route path="/BoxedSets" element={<BoxedSets />} />
+          <Route path="/LoginForm" element={<LoginForm />} />
+          <Route path="/MyAccount" element={<MyAccount />} />
+          <Route path="/RecentlyAdded" element={<RecentlyAdded />} />
+          <Route path="/ShopBySeries" element={<ShopBySeries />} />
+          <Route path="/SignUpForm" element={<SignUpForm />} />
+          <Route path="/SingleBook" element={<SingleBook />} />
+          <Route path="/TrackOrder" element={<TrackOrder />} />
+        </Routes>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App
