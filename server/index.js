@@ -23,6 +23,23 @@ app.get('/api/books', async (req, res) => {
     const SQL = `
     SELECT * FROM manga;
     `;
+
+    const response = await client.query(SQL);
+    res.json(response.rows);
+});
+
+
+app.get('/api/books/:bookSku', async (req, res) => {
+    const param = req.params.bookSku;
+
+    const SQL = `
+    SELECT 
+        sku, title, author, description, coverimage, is_available
+    FROM manga
+    WHERE
+        sku = '${param}';
+    `;    
+
     const response = await client.query(SQL);
     res.json(response.rows);
 });
@@ -137,6 +154,7 @@ const init = async()=>{
         sku SERIAL PRIMARY KEY,
         title VARCHAR(255),
         author VARCHAR(255),
+        description TEXT,
         in_inventory INTEGER DEFAULT 1,
         price VARCHAR(255),
         is_available BOOLEAN DEFAULT TRUE,
@@ -148,11 +166,11 @@ const init = async()=>{
 
     SQL = `
     INSERT INTO manga 
-        (title, author, price, coverimage)
-    values($1,$2,$3,$4);
+        (title, author, description, price, coverimage)
+    values($1,$2,$3,$4,$5);
     `;
     for(const singleManga of manga.inventory){
-        await client.query(SQL, [singleManga.title,singleManga.author,singleManga.price,singleManga.imgsrc]);
+        await client.query(SQL, [singleManga.title,singleManga.author,singleManga.description,singleManga.price,singleManga.imgsrc]);
     }
     console.log('data seeded')
 
