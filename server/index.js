@@ -1,11 +1,7 @@
 import manga from './manga.js';
 import jwt from 'jsonwebtoken'; 
 import crypto from 'crypto';
-<<<<<<< HEAD
-import cors from 'cors'
-=======
 import cors from 'cors';
->>>>>>> main
 
 // imports here for express and pg
 import express from 'express';
@@ -14,13 +10,8 @@ import path from 'path';
 import pg from 'pg';
 const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/manga_db')
 
-<<<<<<< HEAD
-app.use(express.json())
-app.use(cors())
-=======
 app.use(express.json());
 app.use(cors());
->>>>>>> main
 
 // static route (need for deployment)
 //app.use(express.static(path.join(__dirname, '../client/dist')));
