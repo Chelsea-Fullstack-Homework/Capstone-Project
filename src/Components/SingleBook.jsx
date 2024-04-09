@@ -6,13 +6,12 @@ import { useParams } from "react-router-dom";
 export default function SingleBook() {
     const { bookSku } = useParams();
     const [book, setBook] = useState(null);
-    console.log(bookSku)
+    console.log(book)
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log(bookSku)
                 const data = await singleBook(bookSku);
-                setBook(data);
+                setBook(data[0]);
             } catch (error) {
             }
         };
@@ -28,6 +27,7 @@ export default function SingleBook() {
                     <h3>{book.title}</h3>
                     <p>Author: {book.author}</p>
                     <img src={book.coverimage} alt={book.title} style={{ maxWidth: '200px' }} />
+                    <p>Description: {book.description}</p>
                     <p>Available: {book.in_inventory ? 'Yes' : 'No'}</p>
                     {/* Render Checkout button conditionally */}
                     {book.available && (
