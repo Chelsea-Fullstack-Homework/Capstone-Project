@@ -70,6 +70,7 @@ export async function allProducts() {
 }
 
 export async function singleBook(bookSku) {
+    console.log(bookSku)
     try {
         const response = await fetch(`${apiUrl}/api/books/${bookSku}`, {
             headers: {

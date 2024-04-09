@@ -6,10 +6,11 @@ import { useParams } from "react-router-dom";
 export default function SingleBook() {
     const { bookSku } = useParams();
     const [book, setBook] = useState(null);
-
+    console.log(bookSku)
     useEffect(() => {
         const fetchData = async () => {
             try {
+                console.log(bookSku)
                 const data = await singleBook(bookSku);
                 setBook(data);
             } catch (error) {
