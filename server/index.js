@@ -1,6 +1,7 @@
 import manga from './manga.js';
 import jwt from 'jsonwebtoken'; 
 import crypto from 'crypto';
+import cors from 'cors';
 
 // imports here for express and pg
 import express from 'express';
@@ -9,9 +10,13 @@ import path from 'path';
 import pg from 'pg';
 const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/manga_db')
 
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
-// static routes here (you only need these for deployment)
+// static route (need for deployment)
+//app.use(express.static(path.join(__dirname, '../client/dist')));
+// serve html
+//app.get('/', (req, res)=> res.sendFile(path.join(__dirname, '../client/dist/index.html'))). 
 
 // app routes
 app.get('/api/books', async (req, res) => {
@@ -34,13 +39,17 @@ app.post('/api/users/register', async (req, res) => {
     }, crypto.randomBytes(64).toString('hex'));
       
     const SQL = `
-    INSERT INTO users(firstname, lastname, email, password, token)
-    VALUES($1,$2,$3,$4,$5)
-    RETURNING *;
+    INSERT INTO 
+        users(firstname, lastname, email, password, token)
+    VALUES
+        ($1,$2,$3,$4,$5)
+    RETURNING 
+        *;
     `;
     try {
         const response = await client.query(SQL, [firstname, lastname, email, password, token]);
         const user = response.rows[0];
+        console.log(`Created user: ${user.email}`)
         res.send({
             "user": {
                 "id": user.id,
@@ -52,9 +61,49 @@ app.post('/api/users/register', async (req, res) => {
             "token": user.token
         });
     } catch (err) {
-        console.error(err);
+        console.error(err.message);
         res.send({
             "message": "Registration failed!"
+        });
+    }
+});
+
+app.post('/api/users/login', async (req, res)=>{
+    
+    const email = req.body.email;
+    const password = req.body.password;
+
+    const SQL = `
+    SELECT
+        id, firstname, lastname, email, password, token
+    FROM
+        users
+    WHERE
+        email = '${email}';
+    `;
+    try {
+        const response = await client.query(SQL);
+        const user = response.rows[0];
+        if(user.password === password){
+            res.send({
+                "user": {
+                    "id": user.id,
+                    "firstname": user.firstname,
+                    "lastname": user.lastname,
+                    "email": user.email
+                },
+                "message": "Login Successful!",
+                "token": user.token
+            })
+        } else {
+            res.send({
+                "message": "Login Failed!"
+            })
+        }
+    } catch (err) {
+        console.error(err.message);
+        res.send({
+            "message": "No User Found!"
         });
     }
 });
@@ -100,7 +149,7 @@ const init = async()=>{
     SQL = `
     INSERT INTO manga 
         (title, author, price, coverimage)
-    values($1,$2,$3,$4)
+    values($1,$2,$3,$4);
     `;
     for(const singleManga of manga.inventory){
         await client.query(SQL, [singleManga.title,singleManga.author,singleManga.price,singleManga.imgsrc]);
