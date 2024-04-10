@@ -31,11 +31,7 @@ export default function SingleBook({ addToCart }) {
                         <img src={book.coverimage} alt={book.title} className="book-image" />
                     </div>
                     <p className="desc">Description:<br /> {book.description}</p>
-                    <p>Available: {book.in_inventory ? 'Yes' : 'No'}</p>
-                    {/* Render Checkout button conditionally */}
-                    {book.available && (
-                        <button /*onClick={() => updateBookAvailability(bookSku, false)}*/>Add To Cart</button>
-                    )}
+                    <p>Available: {book.is_available ? 'Yes' : 'No'}</p>
                     <button onClick={() => addToCart(book)}>Add To Cart</button>
                 </div>
             )}
