@@ -1,0 +1,82 @@
+body {
+    background-color: #b72c2c;
+    margin: 0;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-top: -8%;
+}
+
+.contactme {
+    margin-bottom: 50px;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.contactme h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+.contactme a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.contactme a:hover {
+    text-decoration: underline;
+}
+
+.form {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #b72c2c;
+}
+
+.form input,
+.form textarea {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+label {
+    color: white;
+    font-size: larger;
+}
+
+a {
+    font-size: 20px;
+}
+a:hover {
+    text-decoration: underline;
+    color: #007bff;
+}
+
+.form textarea {
+    height: 200px;
+}
