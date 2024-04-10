@@ -47,3 +47,19 @@
     border-radius: 5px;
     box-sizing: border-box;
 }
+
+.track-logo {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 400px;
+    height: auto;
+}
+
+.track-logo2 {
+    position: fixed;
+    top: 160px;
+    right: 40px;
+    width: 400px;
+    height: auto;
+}

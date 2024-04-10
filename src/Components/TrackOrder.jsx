@@ -22,6 +22,8 @@ export default function TrackOrder() {
                 />
                 <button className="track-button" onClick={handleTrackOrder}>Track</button>
             </div>
+            <img src="https://i.pinimg.com/originals/b7/9c/a3/b79ca30a7caed9b77a4fbcc39f47f3f9.png" className="track-logo"></img>
+            <img src="https://pngimg.com/d/naruto_PNG19.png" className="track-logo2"></img>
         </div>
     );
 }

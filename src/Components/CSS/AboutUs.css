@@ -1,0 +1,38 @@
+/* AboutUs.css */
+
+.about-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+.about-us-container h2 {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+}
+
+.about-us-container p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: white;
+    padding-top: 50px;
+    font-size: 20px;
+}
+
+.about-us-logo {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 300px;
+    height: auto;
+}
+
+.about-us-logo2 {
+    position: fixed;
+    top: 160px;
+    right: 40px;
+    width: 300px;
+    height: auto;
+}

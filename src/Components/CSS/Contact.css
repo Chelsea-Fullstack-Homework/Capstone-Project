@@ -80,3 +80,18 @@ a:hover {
 .form textarea {
     height: 200px;
 }
+.contact-logo {
+    position: fixed;
+    top: 150px;
+    left: 30px;
+    width: 200px;
+    height: auto;
+}
+
+.contact-logo2 {
+    position: fixed;
+    bottom: 0px;
+    right: -100px;
+    width: 600px;
+    height: auto;
+}

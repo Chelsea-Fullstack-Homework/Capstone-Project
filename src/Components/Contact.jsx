@@ -13,7 +13,7 @@ export default function Contact() {
     return (
         <div className="contact-container">
             <div className="contactme">
-                <h1>Contact Us!</h1>
+                <h1>Contact</h1>
                 <br /><br />
                 <a href="mailto:rockyhilburn@gmail.com">Email Us Here</a>
             </div>
@@ -27,6 +27,8 @@ export default function Contact() {
                     <textarea id="subject" type="text" placeholder="Type Message Here" maxLength="1000"></textarea><br /><br />
                     <input type="submit" value="Submit" />
                 </form>
+            <img src="https://www.kyokovinyl.com/cdn/shop/products/komi.png?v=1640345085" className="contact-logo"></img>
+            <img src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/danganronpa-trigger-happy-havoc/d/d2/Jun.png" className="contact-logo2"></img>
             </div>
         </div>
     );
