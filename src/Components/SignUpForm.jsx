@@ -1,6 +1,7 @@
 import { signupForm } from "../API/API";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./CSS/SignUpForm.css"
 
 export default function SignUpForm({setToken}) {
 
