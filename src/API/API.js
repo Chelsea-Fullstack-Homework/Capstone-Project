@@ -1,6 +1,8 @@
 const apiUrl = "http://localhost:3000"
 
 export async function loginForm(formData) {
+    // formData.email
+    // formData.password
     try {
         const response = await fetch(`${apiUrl}/api/users/login`, {
             method: "POST",
@@ -14,7 +16,7 @@ export async function loginForm(formData) {
         console.log(data)
         if (response.ok) {
             localStorage.setItem('token', data.token);
-
+            return data.token;
         } else {
             alert(data.message);
         }
