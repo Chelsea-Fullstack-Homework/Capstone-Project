@@ -5,7 +5,7 @@ import AddToCart from "./AddToCart";
 import Cart from "./Cart";
 import "./CSS/NavBar.css";
 
-export default function NavBar({ token, cartCount }) {
+export default function NavBar({ token, cartCount, setToken }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleCartPopup = () => {
@@ -32,7 +32,7 @@ export default function NavBar({ token, cartCount }) {
         <li><Link to="/AboutUs">ABOUT US</Link></li>
         <li><Link to="/Contact">CONTACT</Link></li>
         <li><Link to="/TrackOrder">TRACK ORDER</Link></li>
-        <li><AccountButton token={token} /></li>
+        <li><AccountButton token={token} setToken={setToken} /></li>
         <li><AddToCart cartCount={cartCount} onClick={toggleCartPopup} /></li>
       </ul>
       {isCartOpen && <Cart />}

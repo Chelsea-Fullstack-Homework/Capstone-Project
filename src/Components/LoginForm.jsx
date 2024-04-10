@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { loginForm } from "../API/API";
 import "./CSS/LoginForm.css";
 
-export default function LoginForm() {
+export default function LoginForm({ setToken }) {
+
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -17,8 +18,9 @@ export default function LoginForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await loginForm(formData);
-            navigate("/Home");
+            let result = await loginForm(formData);
+            setToken(result);
+            navigate("/Home")
         } catch (error) {
             console.error('Login Error:', error);
         }
