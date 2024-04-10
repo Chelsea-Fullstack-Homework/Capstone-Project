@@ -58,6 +58,7 @@ function App() {
           <Route path="/AddToCart" element={<AddToCart />} />
           <Route path="/Cart" element={<Cart cartItems={cartItems} />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path="/Home" element={<Home />} />
         </Routes>
       </div>
     </div>
