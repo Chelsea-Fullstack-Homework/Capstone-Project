@@ -38,9 +38,10 @@ export default function SignUpForm({setToken}) {
     };
 
     return (
-        <div id="id01" className="modal">
+        <div className="form-container">
+            <div className="signup-form">
             <h2>Sign Up!</h2>
-            <form onSubmit={handleSubmit} className="modal-content animate" action="/action_page.php" method="post">
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="firstname">First Name:</label><br />
                 <input type="text" id="firstname" name="firstname" value={formData.firstname} onChange={handleChange} /><br />
                 <label htmlFor="lastname">Last Name:</label><br />
@@ -54,6 +55,9 @@ export default function SignUpForm({setToken}) {
                 <input type="submit" value="Sign Up" />
             </form>
             <p>Already have an account? <Link to="/LoginForm">Login Here</Link></p>
+            </div>
         </div>
     );
 }
+
+// action="/action_page.php" method="post"
