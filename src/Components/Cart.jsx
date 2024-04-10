@@ -10,7 +10,7 @@ export default function CartPopup() {
 
   return (
     <div className="cart-popup">
-      <h2>Items in Cart</h2>git 
+      <h2>Items in Cart</h2>
       <ul>
         {cartItems.map(item => (
           <li key={item.id}>
