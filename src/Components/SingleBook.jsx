@@ -27,6 +27,7 @@ export default function SingleBook({ addToCart }) {
                 <div className="book-details">
                     <h3>{book.title}</h3>
                     <p>Author: {book.author}</p>
+                    <p>Price: {book.price}</p>
                     <div className="image-container">
                         <img src={book.coverimage} alt={book.title} className="book-image" />
                     </div>

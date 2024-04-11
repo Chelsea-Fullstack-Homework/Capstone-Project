@@ -32,7 +32,7 @@ export default function AboutUs() {
                 suscipit.
             </p>
             <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c7bced49-73a3-43c1-b3ce-fe419a596a72/dfmiv5k-bd84db87-f667-4bd0-b624-c3741d8c0580.png/v1/fill/w_861,h_929/sakamoto_days_taro_sakamoto_render_png__by_marcopolo157_dfmiv5k-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTUwNCIsInBhdGgiOiJcL2ZcL2M3YmNlZDQ5LTczYTMtNDNjMS1iM2NlLWZlNDE5YTU5NmE3MlwvZGZtaXY1ay1iZDg0ZGI4Ny1mNjY3LTRiZDAtYjYyNC1jMzc0MWQ4YzA1ODAucG5nIiwid2lkdGgiOiI8PTEzOTQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.G9cTjreWvKGAgrbBgh2VxguP8mqDg5ab3c2WcWsHIkE" alt="Logo" className="about-us-logo" />
-            <img src="https://www.pngall.com/wp-content/uploads/14/Anya-PNG.png" className="about-us-logo2"></img>
+            <img src="https://i.pinimg.com/originals/83/cf/93/83cf932c6cfd788d2e9ebadc96894439.png" className="about-us-logo2"></img>
         </div>
     );
 }
