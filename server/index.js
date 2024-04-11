@@ -48,13 +48,13 @@ app.post('/api/users/register', async (req, res) => {
     
     let SQL = `
     INSERT INTO
-        carts(skulist)
+        carts(skulist, price)
     VALUES
-        (null)
+        (null, $1)
     RETURNING
         *;
     `;
-    const cartCreate = await client.query(SQL);
+    const cartCreate = await client.query(SQL, [0.00]);
     const cart_id = cartCreate.rows[0].id;
 
     const firstname = req.body.firstname;
@@ -139,7 +139,83 @@ app.post('/api/users/login', async (req, res)=>{
 });
 
 app.get('/api/cart/:userId', async (req, res)=>{
-    res.send("hello from cart");
+    
+    const auth = req.get('Authorization');
+    if(!auth) res.send({"message": "No Authorization Received!"});
+
+    const user_id = req.params.userId;
+
+    let SQL = `
+    SELECT cart_id
+    FROM users
+    WHERE id = '${user_id}';
+    `;
+    let response = await client.query(SQL);
+
+    const cart_id = response.rows[0].cart_id;
+    
+    SQL = `
+    SELECT id, skulist, price 
+    FROM carts
+    WHERE id = '${cart_id}';
+    `;
+    response = await client.query(SQL);
+
+
+    res.send({
+        "message": response.rows[0]
+    });
+})
+
+app.patch('/api/cart/:userId', async (req, res)=>{
+
+    // action: add
+    // action: remove
+
+    const auth = req.get('Authorization');
+    if(!auth) res.send({"message": "No Authorization Received!"});
+
+    const user_id = req.params.userId;
+    const price = req.body.price;
+    const sku = req.body.sku;
+    const action = req.body.action;
+
+    let SQL = `
+    SELECT cart_id
+    FROM users
+    WHERE id = '${user_id}';
+    `;
+    let response = await client.query(SQL);
+
+    const cart_id = response.rows[0].cart_id;
+
+    if (action == 'add') {
+        SQL = `
+        UPDATE carts
+        SET 
+            skulist = array_append(skulist, '${sku}'),
+            price = price + '${price}'
+        WHERE id = '${cart_id}'
+        RETURNING *;
+        `;
+        response = await client.query(SQL);    
+    } else if (action == 'remove') {
+        SQL = `
+        UPDATE carts
+        SET 
+            skulist = array_remove(skulist, '${sku}'),
+            price = price - '${price}'
+        WHERE id = '${cart_id}'
+        RETURNING *;
+        `;
+        response = await client.query(SQL);    
+    } else {
+        response.rows[0] = "No Action Received!"
+    }
+
+    res.send({
+        "message": response.rows[0]
+    });
 })
 
 // create init function
@@ -162,7 +238,7 @@ const init = async()=>{
     CREATE TABLE carts(
         id SERIAL PRIMARY KEY,
         skulist integer[],
-        price VARCHAR(255)
+        price NUMERIC(100, 2)
     );
 
     CREATE TABLE users(
@@ -182,7 +258,7 @@ const init = async()=>{
         author VARCHAR(255),
         description TEXT,
         in_inventory INTEGER DEFAULT 1,
-        price VARCHAR(255),
+        price NUMERIC(100, 2),
         is_available BOOLEAN DEFAULT TRUE,
         coverimage VARCHAR(255)
     );
