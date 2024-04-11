@@ -16,7 +16,7 @@ export async function loginForm(formData) {
         console.log(data)
         if (response.ok) {
             localStorage.setItem('token', data.token);
-            return data.token;
+            return data;
         } else {
             alert(data.message);
         }
@@ -41,7 +41,7 @@ export async function signupForm(formData) {
         if (response.ok) {
             localStorage.setItem('token', data.token);
             alert(data.message)
-            return data.token
+            return data
         } else {
             alert(data.message);
         }
@@ -83,5 +83,29 @@ export async function singleBook(bookSku) {
     } catch (error) {
         console.error('Error fetching book details:', error);
         throw error;
+    }
+}
+
+export async function addToCart(token, book, user) {
+    console.log(user)
+    console.log(book)
+    try {
+        const response = await fetch(`${apiUrl}/api/cart/${user.id}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+            },
+            body: JSON.stringify({
+                "action": "add",
+                "sku": book.sku,
+                "price": book.price
+            })
+        });
+        const data = await response.json();
+        console.log(data)
+        return data;
+    } catch (err) {
+        console.log(err.message);
     }
 }
