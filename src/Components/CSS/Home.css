@@ -1,0 +1,47 @@
+.home-container {
+    position: relative;
+    height: 86vh;
+    background-image: url("https://cdnb.artstation.com/p/assets/images/images/044/884/161/large/alexey-anufriev-mycustomplaymat.jpg?1641397572");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-image {
+    text-align:center;
+}
+
+.background-image h1,
+.background-image p {
+    color: white;
+    background-color: #b72c2c;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.background-image h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.background-image p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+}
+
+.explore-links a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #b72c2c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.explore-links a:hover {
+    background-color: #8e1d1d;
+}

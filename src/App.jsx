@@ -14,6 +14,7 @@ import TrackOrder from './Components/TrackOrder'
 import AddToCart from './Components/AddToCart'
 import Home from './Components/Home'
 import Cart from './Components/Cart'
+import Contact from './Components/Contact'
 import './index.css'
 
 function App() {
@@ -56,6 +57,8 @@ function App() {
           <Route path="/TrackOrder" element={<TrackOrder />} />
           <Route path="/AddToCart" element={<AddToCart />} />
           <Route path="/Cart" element={<Cart cartItems={cartItems} />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/Home" element={<Home />} />
         </Routes>
       </div>
     </div>
