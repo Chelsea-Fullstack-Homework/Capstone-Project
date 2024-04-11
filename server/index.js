@@ -45,26 +45,38 @@ app.get('/api/books/:bookSku', async (req, res) => {
 });
 
 app.post('/api/users/register', async (req, res) => {
+    
+    let SQL = `
+    INSERT INTO
+        carts(skulist, price)
+    VALUES
+        (null, $1)
+    RETURNING
+        *;
+    `;
+    const cartCreate = await client.query(SQL, [0.00]);
+    const cart_id = cartCreate.rows[0].id;
 
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     const email = req.body.email;
     const password = req.body.password;
 
+
     const token = jwt.sign({
         data: { firstname, lastname, email, password }
     }, crypto.randomBytes(64).toString('hex'));
       
-    const SQL = `
+    SQL = `
     INSERT INTO 
-        users(firstname, lastname, email, password, token)
+        users(firstname, lastname, email, password, token, cart_id)
     VALUES
-        ($1,$2,$3,$4,$5)
+        ($1,$2,$3,$4,$5,$6)
     RETURNING 
         *;
     `;
     try {
-        const response = await client.query(SQL, [firstname, lastname, email, password, token]);
+        const response = await client.query(SQL, [firstname, lastname, email, password, token, cart_id]);
         const user = response.rows[0];
         console.log(`Created user: ${user.email}`)
         res.send({
@@ -72,7 +84,8 @@ app.post('/api/users/register', async (req, res) => {
                 "id": user.id,
                 "firstname": user.firstname,
                 "lastname": user.lastname,
-                "email": user.email
+                "email": user.email,
+                "cartId": user.cart_id
             },
             "message": "Registration successful!",
             "token": user.token
@@ -125,6 +138,86 @@ app.post('/api/users/login', async (req, res)=>{
     }
 });
 
+app.get('/api/cart/:userId', async (req, res)=>{
+    
+    const auth = req.get('Authorization');
+    if(!auth) res.send({"message": "No Authorization Received!"});
+
+    const user_id = req.params.userId;
+
+    let SQL = `
+    SELECT cart_id
+    FROM users
+    WHERE id = '${user_id}';
+    `;
+    let response = await client.query(SQL);
+
+    const cart_id = response.rows[0].cart_id;
+    
+    SQL = `
+    SELECT id, skulist, price 
+    FROM carts
+    WHERE id = '${cart_id}';
+    `;
+    response = await client.query(SQL);
+
+
+    res.send({
+        "message": response.rows[0]
+    });
+})
+
+app.patch('/api/cart/:userId', async (req, res)=>{
+
+    // action: add
+    // action: remove
+
+    const auth = req.get('Authorization');
+    if(!auth) res.send({"message": "No Authorization Received!"});
+
+    const user_id = req.params.userId;
+    const price = req.body.price;
+    const sku = req.body.sku;
+    const action = req.body.action;
+
+    let SQL = `
+    SELECT cart_id
+    FROM users
+    WHERE id = '${user_id}';
+    `;
+    let response = await client.query(SQL);
+
+    const cart_id = response.rows[0].cart_id;
+
+    if (action == 'add') {
+        SQL = `
+        UPDATE carts
+        SET 
+            skulist = array_append(skulist, '${sku}'),
+            price = price + '${price}'
+        WHERE id = '${cart_id}'
+        RETURNING *;
+        `;
+        response = await client.query(SQL);    
+    } else if (action == 'remove') {
+        SQL = `
+        UPDATE carts
+        SET 
+            skulist = array_remove(skulist, '${sku}'),
+            price = price - '${price}'
+        WHERE id = '${cart_id}'
+        RETURNING *;
+        `;
+        response = await client.query(SQL);    
+    } else {
+        response.rows[0] = "No Action Received!"
+    }
+
+    res.send({
+        "message": response.rows[0]
+    });
+})
+
 // create init function
 const init = async()=>{
     await client.connect();
@@ -140,6 +233,13 @@ const init = async()=>{
     let SQL = `
     DROP TABLE IF EXISTS manga;
     DROP TABLE IF EXISTS users;
+    DROP TABLE IF EXISTS carts;
+
+    CREATE TABLE carts(
+        id SERIAL PRIMARY KEY,
+        skulist integer[],
+        price NUMERIC(100, 2)
+    );
 
     CREATE TABLE users(
         id SERIAL PRIMARY KEY,
@@ -147,7 +247,9 @@ const init = async()=>{
         lastname text,
         email text NOT NULL UNIQUE,
         password text NOT NULL,
-        token text NOT NULL UNIQUE
+        token text NOT NULL UNIQUE,
+        cart_id integer NOT NULL UNIQUE,
+        FOREIGN KEY(cart_id) REFERENCES carts(id)
     );
 
     CREATE TABLE manga(
@@ -156,7 +258,7 @@ const init = async()=>{
         author VARCHAR(255),
         description TEXT,
         in_inventory INTEGER DEFAULT 1,
-        price VARCHAR(255),
+        price NUMERIC(100, 2),
         is_available BOOLEAN DEFAULT TRUE,
         coverimage VARCHAR(255)
     );
