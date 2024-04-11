@@ -19,7 +19,7 @@ function handleClick(){
                         <div className="dropdown-content">
                             <Link to="/MyAccount">My Account</Link>
                             <Link to="/Cart">My Cart</Link>
-                            <div onClick={handleClick()}>Sign Out</div>
+                            <div onClick={()=>{handleClick()}}>Sign Out</div>
                         </div>
                     </div>
                     :
