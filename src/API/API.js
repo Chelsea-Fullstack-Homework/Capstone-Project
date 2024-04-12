@@ -104,7 +104,7 @@ export async function addToCart(token, book, user) {
         });
         const data = await response.json();
         console.log(data)
-        return data;
+        return data.message;
     } catch (err) {
         console.log(err.message);
     }

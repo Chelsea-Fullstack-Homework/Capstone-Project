@@ -51,7 +51,7 @@ function App() {
           <Route path="/LoginForm" element={<LoginForm setUser={setUser} setToken={setToken}/>} />
           <Route path="/MyAccount" element={<MyAccount />} />
           <Route path="/RecentlyAdded" element={<RecentlyAdded />} />
-          <Route path="/ShowAllProducts" element={<ShowAllProducts addToCart={addToCart} token={token} user={user}/>} />
+          <Route path="/ShowAllProducts" element={<ShowAllProducts addToCart={addToCart} token={token} user={user} setCartItems={setCartItems} setCartCount={setCartCount}/>} />
           <Route path="/SignUpForm" element={<SignUpForm setUser={setUser} setToken={setToken} />} />
           <Route path="/SingleBook" element={<SingleBook />} />
           <Route path="/SingleBook/:bookSku" element={<SingleBook addToCart={addToCart} />} />

@@ -5,7 +5,7 @@ import AddToCartButton from "./AddToCartButton";
 import React from "react";
 import "./CSS/ShowAllProducts.css";
 
-export default function ShowAllProducts({ token, addToCart, user }) {
+export default function ShowAllProducts({ token, addToCart, user, setCartItems, setCartCount }) {
     const [books, setBooks] = useState([]);
     const [error, setError] = useState(null);
 
@@ -36,7 +36,7 @@ export default function ShowAllProducts({ token, addToCart, user }) {
                         <p>Available: {book.in_inventory ? 'Yes' : 'No'}</p>
                         <Link to={`/SingleBook/${book.sku}`}>View Details</Link>
                         <br/>
-                        <AddToCartButton book={book} token={token} user={user}/>
+                        <AddToCartButton book={book} token={token} user={user} setCartItems={setCartItems} setCartCount={setCartCount}/>
                     </div>
                 ))}
             </div>
