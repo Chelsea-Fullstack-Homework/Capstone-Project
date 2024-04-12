@@ -34,6 +34,11 @@ export default function Cart({ cartItems }) {
           )
         }
       </ul>
+            {/* Button to navigate to ConfirmationPage and clear cart */}
+            <Link to="/confirmation-page">
+        <button onClick={handleClearCart}>Proceed to Checkout</button>
+      </Link>
+
     </div>
   );
 }
