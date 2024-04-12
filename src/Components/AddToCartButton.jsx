@@ -5,7 +5,7 @@ export default function AddToCartButton({ book, token, user, setCartItems, setCa
     async function sendToCart(book){
         // call the api
         const result = await addToCart(token, book, user);
-        setCartItems(result.skulist);
+        setCartItems(result.skulist); // returns an array
         setCartCount(result.skulist.length);
     }
 

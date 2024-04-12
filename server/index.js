@@ -38,7 +38,7 @@ app.get('/api/books/:bookSku', async (req, res) => {
 
     const SQL = `
     SELECT 
-        sku, title, author, description, coverimage, is_available
+        sku, title, author, description, coverimage, is_available, price
     FROM manga
     WHERE
         sku = '${param}';
