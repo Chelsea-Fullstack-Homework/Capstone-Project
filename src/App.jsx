@@ -15,6 +15,7 @@ import AddToCart from './Components/AddToCart'
 import Home from './Components/Home'
 import Cart from './Components/Cart'
 import Contact from './Components/Contact'
+import ConfirmationPage from './Components/ConfirmationPage'
 import './index.css'
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
           <Route path="/Cart" element={<Cart cartItems={cartItems} />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Home" element={<Home />} />
+          <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
         </Routes>
       </div>
     </div>

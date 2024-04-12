@@ -1,0 +1,60 @@
+.confirmation-container {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  max-width: 400px;
+  background-color: #fff;
+}
+
+.confirmation-container h1 {
+  color: #000;
+}
+
+.confirmation-container p {
+  color: #000;
+  margin: 10px 0;
+}
+
+.order-number-link {
+  color: #000;
+}
+
+.shop-more-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.shop-more-button:hover {
+  background-color: #0056b3;
+}
+
+.conf-logo {
+  position: fixed;
+  bottom: 00px;
+  left: 10px;
+  width: 400px;
+  height: auto;
+}
+
+.conf-logo2 {
+  position: fixed;
+  bottom: 0px;
+  right: 600px;
+  width: 600px;
+  height: auto;
+}
+
+.conf-logo3 {
+  position: fixed;
+  bottom: 0px;
+  right: -50px;
+  width: 600px;
+  height: auto;
+}
