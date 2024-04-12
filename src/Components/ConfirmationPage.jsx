@@ -23,6 +23,11 @@ function generateOrderNumber() {
 export default function ConfirmationPage() {
   const orderNumber = generateOrderNumber();
 
+  useEffect(() => {
+    localStorage.removeItem('cartItems');
+  }, []);
+
+
   return (
     <div className="confirmation-container">
       <h1>Thank you for your order!</h1>
