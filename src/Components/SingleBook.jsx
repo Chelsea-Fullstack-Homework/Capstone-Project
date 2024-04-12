@@ -1,10 +1,11 @@
 import { singleBook } from "../API/API";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import AddToCartButton from "./AddToCartButton";
 import React from "react";
 import "./CSS/SingleBook.css";
 
-export default function SingleBook({ addToCart }) {
+export default function SingleBook({ token, addToCart, user, setCartItems, setCartCount }) {
     const { bookSku } = useParams();
     const [book, setBook] = useState(null);
 
@@ -33,7 +34,8 @@ export default function SingleBook({ addToCart }) {
                     </div>
                     <p className="desc">Description:<br /> {book.description}</p>
                     <p>Available: {book.is_available ? 'Yes' : 'No'}</p>
-                    <button onClick={() => addToCart(book)}>Add To Cart</button>
+                    <AddToCartButton book={book} token={token} user={user} setCartItems={setCartItems} setCartCount={setCartCount}/>
+                    {/* <button onClick={() => addToCart(book)}>Add To Cart</button> */}
                 </div>
             )}
         </div>

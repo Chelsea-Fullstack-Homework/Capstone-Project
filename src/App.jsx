@@ -41,7 +41,7 @@ function App() {
   return (
     <div>
       <div id="navbar">
-        <NavBar token={token} cartCount={cartCount} setToken={setToken} />
+        <NavBar token={token} cartCount={cartCount} setToken={setToken} setCartCount={setCartCount} setCartItems={setCartItems} />
       </div>
       <div id="mainarea">
         <Routes>
@@ -49,16 +49,16 @@ function App() {
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/AllSeries" element={<AllSeries />} />
           <Route path="/BoxedSets" element={<BoxedSets />} />
-          <Route path="/LoginForm" element={<LoginForm setUser={setUser} setToken={setToken}/>} />
+          <Route path="/LoginForm" element={<LoginForm setUser={setUser} setToken={setToken} setCartItems={setCartItems} setCartCount={setCartCount}/>} />
           <Route path="/MyAccount" element={<MyAccount />} />
           <Route path="/RecentlyAdded" element={<RecentlyAdded />} />
           <Route path="/ShowAllProducts" element={<ShowAllProducts addToCart={addToCart} token={token} user={user} setCartItems={setCartItems} setCartCount={setCartCount}/>} />
           <Route path="/SignUpForm" element={<SignUpForm setUser={setUser} setToken={setToken} />} />
-          <Route path="/SingleBook" element={<SingleBook />} />
-          <Route path="/SingleBook/:bookSku" element={<SingleBook addToCart={addToCart} />} />
+          <Route path="/SingleBook" element={<SingleBook addToCart={addToCart} token={token} user={user} setCartItems={setCartItems} setCartCount={setCartCount}/>} />
+          <Route path="/SingleBook/:bookSku" element={<SingleBook addToCart={addToCart} token={token} user={user} setCartItems={setCartItems} setCartCount={setCartCount} />} />
           <Route path="/TrackOrder" element={<TrackOrder />} />
           <Route path="/AddToCart" element={<AddToCart />} />
-          <Route path="/Cart" element={<Cart cartItems={cartItems} />} />
+          <Route path="/Cart" element={<Cart token={token} user={user} cartItems={cartItems} setCartCount={setCartCount} setCartItems={setCartItems}/>} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/ConfirmationPage" element={<ConfirmationPage />} />

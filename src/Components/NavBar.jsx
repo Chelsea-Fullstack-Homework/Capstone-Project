@@ -5,7 +5,7 @@ import AddToCart from "./AddToCart";
 import Cart from "./Cart";
 import "./CSS/NavBar.css";
 
-export default function NavBar({ token, cartCount, setToken }) {
+export default function NavBar({ token, cartCount, setToken, setCartCount, setCartItems}) {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -27,7 +27,7 @@ export default function NavBar({ token, cartCount, setToken }) {
         <li><Link to="/AboutUs">ABOUT US</Link></li>
         <li><Link to="/Contact">CONTACT</Link></li>
         <li><Link to="/TrackOrder">TRACK ORDER</Link></li>
-        <li><AccountButton token={token} setToken={setToken} /></li>
+        <li><AccountButton token={token} setToken={setToken} setCartCount={setCartCount} setCartItems={setCartItems}/></li>
         <li><AddToCart cartCount={cartCount} /></li>
       </ul>
       <form onSubmit={handleSearchSubmit} className="search-bar">

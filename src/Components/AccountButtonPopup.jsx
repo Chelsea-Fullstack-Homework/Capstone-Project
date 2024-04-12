@@ -1,12 +1,13 @@
 import "./CSS/Account.css"
 import { Link } from "react-router-dom"
 
-export default function AccountButtonPopup({ token, setToken }) {
+export default function AccountButtonPopup({ token, setToken, setCartCount, setCartItems }) {
 
 function handleClick(){
-    ("click")
     localStorage.removeItem("token")
     setToken(null)
+    setCartCount(0)
+    setCartItems([])
 }
 
     return (
