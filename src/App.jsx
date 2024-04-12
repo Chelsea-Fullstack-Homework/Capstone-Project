@@ -58,7 +58,7 @@ function App() {
           <Route path="/SingleBook/:bookSku" element={<SingleBook addToCart={addToCart} token={token} user={user} setCartItems={setCartItems} setCartCount={setCartCount} />} />
           <Route path="/TrackOrder" element={<TrackOrder />} />
           <Route path="/AddToCart" element={<AddToCart />} />
-          <Route path="/Cart" element={<Cart cartItems={cartItems} />} />
+          <Route path="/Cart" element={<Cart token={token} user={user} cartItems={cartItems} setCartCount={setCartCount} setCartItems={setCartItems}/>} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
