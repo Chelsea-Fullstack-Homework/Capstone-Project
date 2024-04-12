@@ -9,9 +9,9 @@ export default function Cart({ cartItems }) {
     const getBooks = async (cartItems) => {
       let arr = [];
       for(const item of cartItems){
-        arr.push(await singleBook(item));
+        let result = await singleBook(item);
+        arr.push(result[0]);
       }
-      (arr)
       setBookArray(arr);
     };
     getBooks(cartItems);

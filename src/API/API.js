@@ -13,7 +13,6 @@ export async function loginForm(formData) {
         });
 
         const data = await response.json();
-        (data)
         if (response.ok) {
             localStorage.setItem('token', data.token);
             return data;
@@ -27,7 +26,6 @@ export async function loginForm(formData) {
 }
 
 export async function signupForm(formData) {
-    (formData)
     try {
         const response = await fetch(`${apiUrl}/api/users/register`, {
             method: "POST",
@@ -79,7 +77,7 @@ export async function singleBook(bookSku) {
             },
         });
         const data = await response.json();
-        return data[0];
+        return data;
     } catch (error) {
         console.error('Error fetching book details:', error);
         throw error;
@@ -101,8 +99,6 @@ export async function addToCart(token, book, user) {
             })
         });
         const data = await response.json();
-        ("addtocart response: ")
-        (data)
         return data.message;
     } catch (err) {
         console.error(err.message);
