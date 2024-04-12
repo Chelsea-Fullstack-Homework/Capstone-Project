@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 export default function AccountButtonPopup({ token, setToken }) {
 
 function handleClick(){
-    console.log("click")
+    ("click")
     localStorage.removeItem("token")
     setToken(null)
 }

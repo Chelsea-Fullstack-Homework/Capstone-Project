@@ -18,9 +18,10 @@ import Contact from './Components/Contact'
 import './index.css'
 
 function App() {
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(null);
   const [cartCount, setCartCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
+  const [user, setUser] = useState(null);
 
   const addToCart = (item) => {
     setCartCount(prevCount => prevCount + 1);
@@ -28,13 +29,13 @@ function App() {
     setCartItems(prevItems => [...prevItems, item]);
   };
 
-  useEffect(() => {
-    try {
-      setToken(localStorage.getItem('token'))
-    } catch (error) {
-      alert('no token found')
-    }
-  }, [])
+  // useEffect(() => {
+  //   try {
+  //     setToken(localStorage.getItem('token'))
+  //   } catch (error) {
+  //     alert('no token found')
+  //   }
+  // }, [])
 
   return (
     <div>
@@ -47,11 +48,11 @@ function App() {
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/AllSeries" element={<AllSeries />} />
           <Route path="/BoxedSets" element={<BoxedSets />} />
-          <Route path="/LoginForm" element={<LoginForm setToken={setToken}/>} />
+          <Route path="/LoginForm" element={<LoginForm setUser={setUser} setToken={setToken}/>} />
           <Route path="/MyAccount" element={<MyAccount />} />
           <Route path="/RecentlyAdded" element={<RecentlyAdded />} />
-          <Route path="/ShowAllProducts" element={<ShowAllProducts addToCart={addToCart} />} />
-          <Route path="/SignUpForm" element={<SignUpForm setToken={setToken} />} />
+          <Route path="/ShowAllProducts" element={<ShowAllProducts addToCart={addToCart} token={token} user={user} setCartItems={setCartItems} setCartCount={setCartCount}/>} />
+          <Route path="/SignUpForm" element={<SignUpForm setUser={setUser} setToken={setToken} />} />
           <Route path="/SingleBook" element={<SingleBook />} />
           <Route path="/SingleBook/:bookSku" element={<SingleBook addToCart={addToCart} />} />
           <Route path="/TrackOrder" element={<TrackOrder />} />

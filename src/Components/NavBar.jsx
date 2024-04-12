@@ -6,11 +6,6 @@ import Cart from "./Cart";
 import "./CSS/NavBar.css";
 
 export default function NavBar({ token, cartCount, setToken }) {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-
-  const toggleCartPopup = () => {
-    setIsCartOpen(!isCartOpen);
-  };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -33,9 +28,8 @@ export default function NavBar({ token, cartCount, setToken }) {
         <li><Link to="/Contact">CONTACT</Link></li>
         <li><Link to="/TrackOrder">TRACK ORDER</Link></li>
         <li><AccountButton token={token} setToken={setToken} /></li>
-        <li><AddToCart cartCount={cartCount} onClick={toggleCartPopup} /></li>
+        <li><AddToCart cartCount={cartCount} /></li>
       </ul>
-      {isCartOpen && <Cart />}
       <form onSubmit={handleSearchSubmit} className="search-bar">
         <input type="text" name="searchInput" placeholder="Search..." className="search-input" />
         <button type="submit" className="search-button">

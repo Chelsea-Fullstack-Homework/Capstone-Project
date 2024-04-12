@@ -11,7 +11,11 @@ import pg from 'pg';
 const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/manga_db')
 
 app.use(express.json());
-app.use(cors());
+var options = {
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
+  }
+app.use(cors(options));
 
 // static route (need for deployment)
 //app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -34,7 +38,7 @@ app.get('/api/books/:bookSku', async (req, res) => {
 
     const SQL = `
     SELECT 
-        sku, title, author, description, coverimage, is_available
+        sku, title, author, description, coverimage, is_available, price
     FROM manga
     WHERE
         sku = '${param}';
@@ -167,7 +171,7 @@ app.get('/api/cart/:userId', async (req, res)=>{
     });
 })
 
-app.patch('/api/cart/:userId', async (req, res)=>{
+app.put('/api/cart/:userId', async (req, res)=>{
 
     // action: add
     // action: remove
@@ -213,7 +217,7 @@ app.patch('/api/cart/:userId', async (req, res)=>{
         response.rows[0] = "No Action Received!"
     }
 
-    res.send({
+    res.json({
         "message": response.rows[0]
     });
 })
