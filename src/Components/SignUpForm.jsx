@@ -27,7 +27,7 @@ export default function SignUpForm({setUser, setToken}) {
             let result = await signupForm(formData);
             setToken(result.token);
             setUser(result.user);
-            navigate("/Home")
+            navigate("/")
         } catch (error) {
             console.error('Sign Up Error:', error);
         }

@@ -1,6 +1,8 @@
 import "./CSS/AddToCart.css"
 import React from "react"
 
+// got from youtube tut (cart logo)
+
 export default function AddToCart({ cartCount, onClick }) {
     return (
         <div className="wholecart">

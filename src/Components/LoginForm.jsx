@@ -26,7 +26,7 @@ export default function LoginForm({ token, setUser, setToken, setCartCount, setC
             setCartItems(getResult.message.skulist);
             setCartCount(getResult.message.skulist.length);
             alert("Login Successful!")
-            navigate("/Home")
+            navigate("/")
         } catch (error) {
             console.error('Login Error:', error);
         }

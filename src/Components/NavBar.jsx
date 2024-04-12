@@ -21,8 +21,7 @@ export default function NavBar({ token, cartCount, setToken, setCartCount, setCa
   return (
     <nav className="navbar">
       <ul>
-        <li><Link to="/Home">HOME</Link></li>
-        <li><Link to="/RecentlyAdded">RECENTLY ADDED</Link></li>
+        <li><Link to="/">HOME</Link></li>
         <li><Link to="/ShowAllProducts">SHOW ALL PRODUCTS</Link></li>
         <li><Link to="/AboutUs">ABOUT US</Link></li>
         <li><Link to="/Contact">CONTACT</Link></li>
