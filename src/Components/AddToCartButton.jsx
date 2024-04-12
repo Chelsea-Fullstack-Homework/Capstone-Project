@@ -10,6 +10,10 @@ export default function AddToCartButton({ book, token, user, setCartItems, setCa
     }
 
     return(
-        <button onClick={() => sendToCart(book)}>Add To Cart</button>
+        <>
+        {
+            (token && (<button onClick={() => sendToCart(book)}>Add To Cart</button>))
+        }
+        </>
     )
 }

@@ -104,3 +104,18 @@ export async function addToCart(token, book, user) {
         console.error(err.message);
     }
 }
+
+export async function getCart(token, user){
+    try {
+        const response = await fetch(`${apiUrl}/api/cart/${user.id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+            }
+        });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
